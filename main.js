@@ -16,6 +16,13 @@ var todoList = {
     var todo = this.todos[pos];
     todo.completed = !todo.completed;
   },
+  clearCompleted() {
+    for (i = 0; i < this.todos.length; ++i) {
+      if (this.todos[i].completed === true) {
+        this.todos.splice(i--, 1);
+      }
+    }
+  },
   toggleAll() {
     var completedTodos = 0;
     var totalTodos = this.todos.length;
@@ -37,10 +44,10 @@ var todoList = {
       }
     });
   },
-  getNumberOfCompletedTodos() {
+  getNumberOfActiveTodos() {
     var completedTodoNumber = 0;
     this.todos.forEach(function(todo) {
-      if (todo.completed === true) {
+      if (!todo.completed) {
         completedTodoNumber++;
       }
     });
@@ -82,10 +89,14 @@ var handlers = {
   showCompleted() {
     document.querySelector("ul").classList.remove("active");
     document.querySelector("ul").classList.add("completed");
+  },
+  clearCompleted() {
+    todoList.clearCompleted();
+    view.displayTodos();
   }
 };
 
-// Add new todo when enter is pressed
+// Add new todo when ENTER is pressed
 document.querySelector("#todoInput").addEventListener("keypress", function(e) {
   if (e.keyCode == 13) {
     handlers.addNewTodo();
@@ -98,7 +109,7 @@ var view = {
     todoUl.innerHTML = "";
 
     var completedTodoCounter = document.querySelector("#completed-todos");
-    completedTodoCounter.innerHTML = todoList.getNumberOfCompletedTodos();
+    completedTodoCounter.innerHTML = todoList.getNumberOfActiveTodos();
 
     todoList.todos.forEach((todo, possition) => {
       var todoLi = document.createElement("li");

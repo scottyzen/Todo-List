@@ -5,34 +5,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
 <body>
   <div class="wrapper">
-    <h2>Todo's</h2>
-    <div>
+
+    <!-- Todo HEAD -->
+    <div class="todo-head">
+      <h2>Todo's</h2>
+      <button onclick="handlers.toggleAll()">Toggle all</button>
       <input type="text" id="todoInput">
       <button onclick="handlers.addNewTodo()">Add</button>
       <br>
     </div>
-    <div>
+
+    <!-- Todo BODY -->
+    <div class="todo-body">
       <ul>
         <!-- Todo <li>'s here-->
       </ul>
     </div>
-    <div>
-      <p>Completed:
-        <span id="completed-todos">0</span>
-      </p>
-      <button onclick="handlers.toggleAll()">Toggle all</button>
-    </div>
-    <div>
-      <button onclick="handlers.showAll()">All</button>
-      <button onclick="handlers.showActive()">Actuve</button>
-      <button onclick="handlers.showCompleted()">Completed</button>
+
+    <!-- Todo FOOTER -->
+    <div class="todo-footer">
+      <div>
+        <p>
+          <span id="completed-todos">0</span> Items left
+        </p>
+      </div>
+      <div id="view-toggles">
+        <button onclick="handlers.showAll()">All</button>
+        <button onclick="handlers.showActive()">Actuve</button>
+        <button onclick="handlers.showCompleted()">Completed</button>
+      </div>
+      <div>
+        <button onclick="handlers.clearCompleted()">Clear completed</button>
+      </div>
     </div>
   </div>
 
