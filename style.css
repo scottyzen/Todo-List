@@ -1,0 +1,32 @@
+/* My Styles */
+* {
+  list-style-type: none;
+}
+.wrapper {
+  max-width: 720px;
+  padding: 10%;
+  margin: auto;
+}
+.completed {
+  text-decoration: line-through;
+  color: #27ae60;
+  font-weight: bold;
+}
+.button-danger {
+  margin-left: 20px;
+  display: inline-block;
+  padding: 2px 4px;
+  height: auto;
+  line-height: normal;
+  font-weight: 300;
+}
+ul li {
+  width: 100%;
+  display: block;
+  margin-bottom: 1px;
+  font-size: 1.7rem;
+  padding-bottom: 10px;
+}
+ul li button {
+  float: right;
+}
