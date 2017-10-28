@@ -4,7 +4,7 @@
 }
 .wrapper {
   max-width: 720px;
-  padding: 10%;
+  padding: 10% 5%;
   margin: auto;
 }
 .completed {
@@ -29,4 +29,14 @@ ul li {
 }
 ul li button {
   float: right;
+}
+
+.active .completed {
+  display: none;
+}
+.completed li {
+  display: none;
+}
+.completed .completed {
+  display: inline-block;
 }

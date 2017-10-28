@@ -60,17 +60,28 @@ var handlers = {
       view.displayTodos();
     }
   },
-  deleteTodo: function(possition) {
+  deleteTodo(possition) {
     todoList.deleteTodo(possition);
     view.displayTodos();
   },
-  completeTodo: function(possition) {
+  completeTodo(possition) {
     todoList.toggleCompleted(possition);
     view.displayTodos();
   },
   toggleAll: () => {
     todoList.toggleAll();
     view.displayTodos();
+  },
+  showAll() {
+    document.querySelector("ul").classList.remove("active", "completed");
+  },
+  showActive() {
+    document.querySelector("ul").classList.remove("completed");
+    document.querySelector("ul").classList.add("active");
+  },
+  showCompleted() {
+    document.querySelector("ul").classList.remove("active");
+    document.querySelector("ul").classList.add("completed");
   }
 };
 
