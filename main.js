@@ -1,5 +1,5 @@
 var todoList = {
-  todos: [],
+  todos: getLocalTodoList(),
   addTodos(todoText) {
     this.todos.push({
       todoText: todoText,
@@ -49,7 +49,7 @@ var todoList = {
   },
   getNumberOfActiveTodos() {
     var completedTodoNumber = 0;
-    this.todos.forEach(function(todo) {
+    this.todos.forEach(todo => {
       if (!todo.completed) {
         completedTodoNumber++;
       }
@@ -122,20 +122,27 @@ var view = {
 
     todoList.todos.forEach((todo, possition) => {
       var todoLi = document.createElement("li");
+      var icon = document.createElement("i");
       if (todo.completed) {
         todoLi.classList.add("completed");
+        icon.classList.add("fa", "fa-check-square-o");
       } else {
         todoLi.classList.remove("completed");
+        icon.classList.add("fa", "fa-square-o");
       }
       todoLi.id = possition;
       todoLi.textContent = todo.todoText;
+      todoLi.prepend(icon);
       todoLi.appendChild(this.createDeleteButton());
       todoUl.appendChild(todoLi);
     });
+
+    // Update localStorage
+    localStorage.setItem("todos", JSON.stringify(todoList.todos));
   },
   createDeleteButton: function() {
     var button = document.createElement("a");
-    button.textContent = "X";
+    button.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
     button.className = "button-danger";
     return button;
   },
@@ -156,3 +163,17 @@ var view = {
 };
 
 view.setUpEventListeners();
+
+function getLocalTodoList() {
+  // get json data from localStorage
+  var jsonData = JSON.parse(localStorage.getItem("todos"));
+  var result = [];
+  // check if a list is already stored in localStorage
+  if (jsonData === null) {
+    return [];
+  } else {
+    for (var i in jsonData) result.push(jsonData[i]);
+  }
+  return result;
+}
+view.displayTodos();

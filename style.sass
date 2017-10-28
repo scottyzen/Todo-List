@@ -13,8 +13,12 @@ html
 body
   font-family: "Raleway", sans-serif
   font-size: 2rem
-  font-weight: 300
+  font-weight: 200
+  color: #666
   padding: 4%
+  text-align: center
+  h2
+    font-weight: 300
 
 input
   appearance: none
@@ -23,19 +27,20 @@ textarea, input, button
   outline: none
 
 .wrapper
-  margin: auto
+  margin: 5% auto
+  max-width: 600px
   box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3)
+  text-align: left
 
 .completed
   text-decoration: line-through
-  color: #27ae60
+  color: yellowgreen
 
 #todoInput
   border: none
   flex: 1
-  padding: 0 2.5%
+  padding: 0 
   margin: 5%
-  text-indent: 20px
   font-size: 2rem
   font-weight: 100
   &::-webkit-input-placeholder
@@ -50,14 +55,18 @@ textarea, input, button
 .todo-head a
   padding: 5% 0
 
-ul li
-  width: 100%
-  display: block
-  padding-bottom: 10px
-  padding: 2.5% 5%
-  border-bottom: 1px solid #ccc
-  a
-    float: right
+ul
+  li
+    width: 100%
+    display: block
+    padding-bottom: 10px
+    padding: 3% 5%
+    border-bottom: 1px solid #eee
+    font-size: 1.8rem
+    a
+      float: right
+    i
+      margin-right: 5%
 
 .active 
   .completed
@@ -70,7 +79,7 @@ ul li
     display: inline-block
 
 ul li a
-  color: black
+  color: #666
 
 .todo-head
   display: flex
@@ -96,8 +105,9 @@ ul li a
   color: darken(yellowgreen, 20%)
   #view-toggles
     flex: 1
-
+#author
+  font-size: 1.2rem
 /* Buttons
-
 button
-  padding: 2px 5px
+  padding: 2.5px 5px
+  
