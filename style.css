@@ -6,56 +6,130 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   font-size: 10px;
 }
+
 body {
   font-family: "Raleway", sans-serif;
   font-size: 2rem;
-  padding: 2%;
+  font-weight: 300;
+  padding: 4%;
 }
+
+input {
+  appearance: none;
+}
+
+textarea, input, button {
+  outline: none;
+}
+
 .wrapper {
-  padding: 10% 5%;
   margin: auto;
-  border: 1px solid lightblue;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
 }
+
 .completed {
   text-decoration: line-through;
   color: #27ae60;
 }
-.button-danger {
-  display: inline-block;
-  padding: 2px 4px;
+
+#todoInput {
+  border: none;
+  flex: 1;
+  padding: 0 2.5%;
+  margin: 5%;
+  text-indent: 20px;
+  font-size: 2rem;
+  font-weight: 100;
 }
+
+#todoInput::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+#todoInput::-moz-placeholder {
+  color: #ccc;
+}
+
+#todoInput:-ms-input-placeholder {
+  color: #ccc;
+}
+
+#todoInput:-moz-placeholder {
+  color: #ccc;
+}
+
+.todo-head a {
+  padding: 5% 0;
+}
+
 ul li {
   width: 100%;
   display: block;
   padding-bottom: 10px;
+  padding: 2.5% 5%;
+  border-bottom: 1px solid #ccc;
 }
-ul li button {
+
+ul li a {
   float: right;
 }
 
 .active .completed {
   display: none;
 }
+
 .completed li {
   display: none;
 }
+
 .completed .completed {
   display: inline-block;
 }
+
+ul li a {
+  color: black;
+}
+
 .todo-head {
-  background-color: lightcoral;
+  display: flex;
+  padding: 0 5%;
+  border-bottom: 1px solid #ccc;
 }
+
 .todo-body {
-  background-color: peachpuff;
+  background-color: #fff;
 }
+
+.todo-body p {
+  text-align: center;
+  color: #ddd;
+  font-weight: 100;
+  font-size: 1.6rem;
+  padding: 2.5%;
+}
+
 .todo-footer {
+  background-color: yellowgreen;
+  text-align: center;
   display: flex;
   font-size: 1.2rem;
+  font-weight: 500;
+  padding: 2.5% 5%;
+  color: #5c7b1e;
 }
+
 .todo-footer #view-toggles {
   flex: 1;
-  background-color: tomato;
 }
+
+/* Buttons */
+button {
+  padding: 2px 5px;
+}
+ 
+
+ /*# sourceMappingURL= style.css.map */

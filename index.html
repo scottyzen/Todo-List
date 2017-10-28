@@ -6,25 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
 <body>
+  <h2>Todo's</h2>
   <div class="wrapper">
 
     <!-- Todo HEAD -->
     <div class="todo-head">
-      <h2>Todo's</h2>
-      <button onclick="handlers.toggleAll()">Toggle all</button>
-      <input type="text" id="todoInput">
-      <button onclick="handlers.addNewTodo()">Add</button>
-      <br>
+      <a onclick="handlers.toggleAll()">
+        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+        </i>
+      </a>
+      <input type="text" id="todoInput" placeholder="What to do?">
+      <!-- <a onclick="handlers.addNewTodo()">Add</a> -->
     </div>
 
     <!-- Todo BODY -->
     <div class="todo-body">
+      <p id="empty-list">List is empty</p>
       <ul>
         <!-- Todo <li>'s here-->
       </ul>
@@ -43,7 +47,7 @@
         <button onclick="handlers.showCompleted()">Completed</button>
       </div>
       <div>
-        <button onclick="handlers.clearCompleted()">Clear completed</button>
+        <a onclick="handlers.clearCompleted()">Clear completed</a>
       </div>
     </div>
   </div>

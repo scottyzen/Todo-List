@@ -7,9 +7,11 @@ var todoList = {
     });
   },
   changeTodo(pos, todoText) {
+    // Edit todo text
     this.todos[pos].todoText = todoText;
   },
   deleteTodo(pos) {
+    // Delete todo buy its possition on array
     this.todos.splice(pos, 1);
   },
   toggleCompleted(pos) {
@@ -17,6 +19,7 @@ var todoList = {
     todo.completed = !todo.completed;
   },
   clearCompleted() {
+    // itterate over array and delete completed todo's
     for (i = 0; i < this.todos.length; ++i) {
       if (this.todos[i].completed === true) {
         this.todos.splice(i--, 1);
@@ -105,6 +108,12 @@ document.querySelector("#todoInput").addEventListener("keypress", function(e) {
 
 var view = {
   displayTodos: function() {
+    // Remove "List is empty" message
+    var emptyList = document.querySelector("#empty-list");
+    if (emptyList) {
+      emptyList.remove();
+    }
+
     var todoUl = document.querySelector("ul");
     todoUl.innerHTML = "";
 
@@ -125,7 +134,7 @@ var view = {
     });
   },
   createDeleteButton: function() {
-    var button = document.createElement("button");
+    var button = document.createElement("a");
     button.textContent = "X";
     button.className = "button-danger";
     return button;

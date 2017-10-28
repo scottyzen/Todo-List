@@ -1,0 +1,103 @@
+/* My Styles
+
+*
+  list-style-type: none
+  text-decoration: none
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+  font-size: 10px
+
+body
+  font-family: "Raleway", sans-serif
+  font-size: 2rem
+  font-weight: 300
+  padding: 4%
+
+input
+  appearance: none
+
+textarea, input, button
+  outline: none
+
+.wrapper
+  margin: auto
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3)
+
+.completed
+  text-decoration: line-through
+  color: #27ae60
+
+#todoInput
+  border: none
+  flex: 1
+  padding: 0 2.5%
+  margin: 5%
+  text-indent: 20px
+  font-size: 2rem
+  font-weight: 100
+  &::-webkit-input-placeholder
+    color: #ccc
+  &::-moz-placeholder
+    color: #ccc
+  &:-ms-input-placeholder
+    color: #ccc
+  &:-moz-placeholder
+    color: #ccc
+
+.todo-head a
+  padding: 5% 0
+
+ul li
+  width: 100%
+  display: block
+  padding-bottom: 10px
+  padding: 2.5% 5%
+  border-bottom: 1px solid #ccc
+  a
+    float: right
+
+.active 
+  .completed
+    display: none
+
+.completed
+  li
+    display: none
+  .completed
+    display: inline-block
+
+ul li a
+  color: black
+
+.todo-head
+  display: flex
+  padding: 0 5%
+  border-bottom: 1px solid #ccc
+
+.todo-body
+  background-color: #fff
+  p
+    text-align: center
+    color: #ddd
+    font-weight: 100
+    font-size: 1.6rem
+    padding: 2.5%
+
+.todo-footer
+  background-color: yellowgreen
+  text-align: center
+  display: flex
+  font-size: 1.2rem
+  font-weight: 500
+  padding: 2.5% 5%
+  color: darken(yellowgreen, 20%)
+  #view-toggles
+    flex: 1
+
+/* Buttons
+
+button
+  padding: 2px 5px
