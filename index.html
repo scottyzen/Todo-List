@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h2>Todo's</h2>
+  <h2>Lets get it done</h2>
   <div class="wrapper">
 
     <!-- Todo HEAD -->
@@ -23,7 +23,9 @@
         </i>
       </a>
       <input type="text" id="todoInput" placeholder="What to do?">
-      <!-- <a onclick="handlers.addNewTodo()">Add</a> -->
+      <a onclick="handlers.addNewTodo()">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+      </a>
     </div>
 
     <!-- Todo BODY -->
@@ -37,9 +39,7 @@
     <!-- Todo FOOTER -->
     <div class="todo-footer">
       <div>
-        <p>
-          <span id="completed-todos">0</span> Items left
-        </p>
+        <p id="completed-todos"></p>
       </div>
       <div id="view-toggles">
         <button onclick="handlers.showAll()">All</button>

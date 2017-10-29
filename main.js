@@ -3,7 +3,8 @@ var todoList = {
   addTodos(todoText) {
     this.todos.push({
       todoText: todoText,
-      completed: false
+      completed: false,
+      date: this.getDateCreated()
     });
   },
   changeTodo(pos, todoText) {
@@ -55,6 +56,14 @@ var todoList = {
       }
     });
     return completedTodoNumber;
+  },
+  getDateCreated() {
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    return day + "/" + month + "/" + year;
   }
 };
 
@@ -118,7 +127,8 @@ var view = {
     todoUl.innerHTML = "";
 
     var completedTodoCounter = document.querySelector("#completed-todos");
-    completedTodoCounter.innerHTML = todoList.getNumberOfActiveTodos();
+    completedTodoCounter.textContent =
+      todoList.getNumberOfActiveTodos() + " Items left";
 
     todoList.todos.forEach((todo, possition) => {
       var todoLi = document.createElement("li");
@@ -131,9 +141,9 @@ var view = {
         icon.classList.add("fa", "fa-square-o");
       }
       todoLi.id = possition;
-      todoLi.textContent = todo.todoText;
-      todoLi.prepend(icon);
+      todoLi.innerHTML = `<span>${todo.todoText}</span> <small>${todo.date}</small>`;
       todoLi.appendChild(this.createDeleteButton());
+      todoLi.prepend(icon);
       todoUl.appendChild(todoLi);
     });
 
@@ -142,7 +152,7 @@ var view = {
   },
   createDeleteButton: function() {
     var button = document.createElement("a");
-    button.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
+    button.innerHTML = '<i class="fa fa-trash-o"></i>';
     button.className = "button-danger";
     return button;
   },
