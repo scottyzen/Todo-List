@@ -19,36 +19,38 @@
     <!-- Todo HEAD -->
     <div class="todo-head">
       <a onclick="handlers.toggleAll()">
-        <i class="fa fa-square-o" aria-hidden="true"></i>
-        </i>
+        <i class="fa fa-caret-square-o-left fa-rotate-270" aria-hidden="true"></i>
       </a>
-      <input type="text" id="todoInput" placeholder="What to do?">
+      <input type="text" id="todoInput" placeholder="What needs to be done?" autofocus>
       <a onclick="handlers.addNewTodo()">
-        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
       </a>
     </div>
 
-    <!-- Todo BODY -->
-    <div class="todo-body">
-      <p id="empty-list">List is empty</p>
-      <ul>
-        <!-- Todo <li>'s here-->
-      </ul>
-    </div>
+    <!-- BODY FOOTER wrapper -->
+    <div class="body-footer-wrap">
 
-    <!-- Todo FOOTER -->
-    <div class="todo-footer">
-      <div id="items-left-wrap">
-        <p id="completed-todos"></p>
+      <!-- Todo BODY -->
+      <div class="todo-body">
+        <ul>
+          <!-- Todo <li>'s here-->
+        </ul>
       </div>
-      <div id="view-toggles">
-        <button onclick="handlers.showAll()">All</button>
-        <button onclick="handlers.showActive()">Actuve</button>
-        <button onclick="handlers.showCompleted()">Completed</button>
+
+      <!-- Todo FOOTER -->
+      <div class="todo-footer">
+        <div id="items-left-wrap">
+          <p id="completed-todos"></p>
+        </div>
+        <div id="view-toggles">
+          <button onclick="handlers.showAll()">All</button>
+          <button onclick="handlers.showActive()">Actuve</button>
+          <button onclick="handlers.showCompleted()">Completed</button>
+        </div>
+        <div id="clear-completed-wrap">
+          <a onclick="handlers.clearCompleted()">Clear completed</a>
+        </div>
       </div>
-      <div id="clear-completed-wrap">
-        <a onclick="handlers.clearCompleted()">Clear completed</a>
-      </div>
+
     </div>
   </div>
 

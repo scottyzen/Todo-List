@@ -106,16 +106,22 @@ document.querySelector("#todoInput").addEventListener("keypress", function(e) {
 
 let view = {
   displayTodos: function() {
-    // Remove "List is empty" message
-    const emptyList = document.querySelector("#empty-list");
-    if (emptyList) emptyList.remove();
+    // Hide todo list when empty
+    let bodyAndFooter = document.querySelector(".body-footer-wrap");
+    if (todoList.todos.length > 0) {
+      bodyAndFooter.style.display = "block";
+    } else {
+      bodyAndFooter.style.display = "none";
+    }
 
     const todoUl = document.querySelector("ul");
     todoUl.innerHTML = "";
-    const completedTodoCounter = document.querySelector("#completed-todos");
 
+    // Active todo's counter
+    const completedTodoCounter = document.querySelector("#completed-todos");
+    let activeTodos = todoList.getNumberOfActiveTodos();
     completedTodoCounter.textContent =
-      todoList.getNumberOfActiveTodos() + " Items left";
+      activeTodos === 0 ? "All caught up" : activeTodos + " Items left";
 
     todoList.todos.forEach((todo, possition) => {
       let todoLi = document.createElement("li");
