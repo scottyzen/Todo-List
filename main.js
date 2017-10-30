@@ -123,6 +123,13 @@ let view = {
     completedTodoCounter.textContent =
       activeTodos === 0 ? "All caught up" : activeTodos + " Items left";
 
+    let checkSquare = document.querySelector("#check-square");
+    if (activeTodos === 0) {
+      checkSquare.classList.add("fa-square-o");
+    } else {
+      checkSquare.classList.remove("fa-square-o");
+    }
+
     todoList.todos.forEach((todo, possition) => {
       let todoLi = document.createElement("li");
       let icon = document.createElement("i");

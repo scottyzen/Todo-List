@@ -14,11 +14,8 @@ body
   font-size: 2rem
   font-weight: 200
   color: #777
-  background-color: #eee
-  background: -webkit-linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
-  background: -o-linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
-  background: -moz-linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
-  background: linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
+  background: url('ticks_@2X.png')
+  background-size: 200px 200px
   min-height: 100vh
   padding: 4%
   text-align: center
@@ -51,6 +48,7 @@ textarea, input, button
   margin: 5%
   font-size: 2rem
   font-weight: 100
+  letter-spacing: 1.5px
   &::-webkit-input-placeholder
     color: #ccc
   &::-moz-placeholder
@@ -60,31 +58,6 @@ textarea, input, button
   &:-moz-placeholder
     color: #ccc
 
-.todo-head a
-  padding: 5% 0
-
-ul
-  li
-    width: 100%
-    display: block
-    padding-bottom: 10px
-    padding: 4% 5%
-    border-bottom: 1px solid #eee
-    font-size: 1.8rem
-    .fa-
-    a
-      float: right
-      color: #666
-    i
-      margin-right: 5%
-      pointer-events: none
-    small
-      font-size: 1.2rem
-      color: #ddd
-      padding: 5px
-      pointer-events: none
-    span  
-      pointer-events: none
 
 .active 
   .completed
@@ -100,10 +73,45 @@ ul
 .todo-head
   display: flex
   padding: 0 5%
-  border-bottom: 1px solid #ccc
+  border-bottom: 1px solid #eee
+  border-left: 1px solid #ccc
+  border-right: 1px solid #ccc
+  a
+    padding: 5% 0
+    font-size: 1.8rem
+    line-height: 24px
+    color: #777
 
 .todo-body
   background-color: #fff
+  ul
+    border: none
+    margin: 0
+    padding: 0
+  li
+    width: 100%
+    display: block
+    padding-bottom: 10px
+    padding: 4% 5%
+    border-bottom: 1px solid #eee
+    border-left: 1px solid #ccc
+    border-right: 1px solid #ccc
+    font-size: 1.8rem
+    &:last-of-type
+      border-bottom: none
+    a
+      float: right
+      color: #666
+    i
+      margin-right: 5%
+      pointer-events: none
+    small
+      font-size: 1.2rem
+      color: #ddd
+      padding: 5px
+      pointer-events: none
+    span  
+      pointer-events: none
   p
     text-align: center
     color: #ddd
@@ -112,12 +120,14 @@ ul
     padding: 2.5%
   small
     text-decoration: none !important
+  
 
 .body-footer-wrap
   margin-bottom: 10%
   .todo-footer
     background-color: adjust-hue(darken($primary, 15%) ,5deg)
-    border-top: 1px solid adjust-hue(darken($primary, 20%), 5deg)
+    border-left: 1px solid adjust-hue(darken($primary, 20%), 5deg)
+    border-right: 1px solid adjust-hue(darken($primary, 20%), 5deg)
     border-bottom: 1px solid adjust-hue(darken($primary, 30%), 5deg)
     text-align: center
     display: flex
@@ -155,3 +165,6 @@ ul
     color: #666
     &:hover
       color: darken($primary, 25%)
+
+.fa-square-o, .fa-check-square-o
+  width: 10px
