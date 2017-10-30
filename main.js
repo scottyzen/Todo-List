@@ -22,21 +22,11 @@ var todoList = {
   clearCompleted() {
     // itterate over array and delete completed todo's
     for (i = 0; i < this.todos.length; ++i) {
-      if (this.todos[i].completed === true) {
-        this.todos.splice(i--, 1);
-      }
+      if (this.todos[i].completed === true) this.todos.splice(i--, 1);
     }
   },
   toggleAll() {
-    var completedTodos = 0;
     var totalTodos = this.todos.length;
-
-    //Get number of completed todos
-    this.todos.forEach(function(todo) {
-      if (todo.completed) {
-        completedTodos++;
-      }
-    });
 
     // If everything it true make everything false
     this.todos.forEach(function(todo) {
@@ -48,20 +38,19 @@ var todoList = {
       }
     });
   },
+  // Return the number of Active todo's
   getNumberOfActiveTodos() {
-    var completedTodoNumber = 0;
+    var todosLeft = 0;
     this.todos.forEach(todo => {
-      if (!todo.completed) {
-        completedTodoNumber++;
-      }
+      if (!todo.completed) todosLeft++;
     });
-    return completedTodoNumber;
+    return todosLeft;
   },
   getDateCreated() {
     var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
+    var month = dateObj.getUTCMonth() + 1; // month 10
+    var day = dateObj.getUTCDate(); // day 28
+    var year = dateObj.getUTCFullYear(); // year 2017
 
     return day + "/" + month + "/" + year;
   }
@@ -70,25 +59,26 @@ var todoList = {
 var handlers = {
   addNewTodo: () => {
     var addTodoText = document.querySelector("#todoInput");
-    if (addTodoText.value === "") {
-      console.log("Error: Input is empty");
-    } else {
+    if (addTodoText.value !== "") {
       todoList.addTodos(addTodoText.value);
       // Clear input after adding new todo
       addTodoText.value = "";
       view.displayTodos();
     }
   },
+  toggleAll: () => {
+    // Show Everything
+    todoList.toggleAll();
+    view.displayTodos();
+  },
   deleteTodo(possition) {
+    // Show all todos that are not completed
     todoList.deleteTodo(possition);
     view.displayTodos();
   },
   completeTodo(possition) {
+    // Show completed todos only
     todoList.toggleCompleted(possition);
-    view.displayTodos();
-  },
-  toggleAll: () => {
-    todoList.toggleAll();
     view.displayTodos();
   },
   showAll() {
@@ -110,23 +100,19 @@ var handlers = {
 
 // Add new todo when ENTER is pressed
 document.querySelector("#todoInput").addEventListener("keypress", function(e) {
-  if (e.keyCode == 13) {
-    handlers.addNewTodo();
-  }
+  if (e.keyCode == 13) handlers.addNewTodo();
 });
 
 var view = {
   displayTodos: function() {
     // Remove "List is empty" message
     var emptyList = document.querySelector("#empty-list");
-    if (emptyList) {
-      emptyList.remove();
-    }
+    if (emptyList) emptyList.remove();
 
     var todoUl = document.querySelector("ul");
     todoUl.innerHTML = "";
-
     var completedTodoCounter = document.querySelector("#completed-todos");
+
     completedTodoCounter.textContent =
       todoList.getNumberOfActiveTodos() + " Items left";
 
@@ -142,8 +128,12 @@ var view = {
       }
       todoLi.id = possition;
       todoLi.innerHTML = `<span>${todo.todoText}</span> <small>${todo.date}</small>`;
-      todoLi.appendChild(this.createDeleteButton());
       todoLi.prepend(icon);
+
+      // Create buttons to updated and distroy todos
+      todoLi.appendChild(this.createDeleteButton());
+
+      // Add each todo list item to the unordered list
       todoUl.appendChild(todoLi);
     });
 
@@ -151,8 +141,9 @@ var view = {
     localStorage.setItem("todos", JSON.stringify(todoList.todos));
   },
   createDeleteButton: function() {
+    // Create DELETE Button
     var button = document.createElement("a");
-    button.innerHTML = '<i class="fa fa-trash-o"></i>';
+    button.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
     button.className = "button-danger";
     return button;
   },
@@ -160,13 +151,14 @@ var view = {
     var todoUl = document.querySelector("ul");
     todoUl.addEventListener("click", function(event) {
       // Get the element that was clicked
-      var elementClicked = event.target;
+      var elClicked = event.target;
+
       // Check if element clicked was the delete button
-      if (elementClicked.className === "button-danger") {
-        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      if (elClicked.className === "button-danger") {
+        handlers.deleteTodo(parseInt(elClicked.parentNode.id));
       }
-      if (elementClicked.nodeName === "LI") {
-        handlers.completeTodo(parseInt(elementClicked.id));
+      if (elClicked.nodeName === "LI") {
+        handlers.completeTodo(parseInt(elClicked.id));
       }
     });
   }

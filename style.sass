@@ -1,4 +1,4 @@
-$primary: #99e2d4
+$primary: #D1E5FA
 
 *
   list-style-type: none
@@ -15,10 +15,10 @@ body
   font-weight: 200
   color: #777
   background-color: #eee
-  background: -webkit-linear-gradient(adjust-hue(lighten($primary, 10%), 10deg), adjust-hue(lighten($primary, 20%),-10deg))
-  background: -o-linear-gradient(adjust-hue(lighten($primary, 10%), 10deg), adjust-hue(lighten($primary, 20%),-10deg))
-  background: -moz-linear-gradient(adjust-hue(lighten($primary, 10%), 10deg), adjust-hue(lighten($primary, 20%),-10deg))
-  background: linear-gradient(adjust-hue(lighten($primary, 10%), 10deg), adjust-hue(lighten($primary, 20%),-10deg))
+  background: -webkit-linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
+  background: -o-linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
+  background: -moz-linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
+  background: linear-gradient(adjust-hue(lighten($primary, 8%), 10deg), adjust-hue(lighten($primary, 10%),-10deg))
   min-height: 100vh
   padding: 4%
   text-align: center
@@ -41,7 +41,7 @@ textarea, input, button
 .completed
   span
     text-decoration: line-through
-    color: $primary
+    color: adjust-hue(darken($primary, 10%), 5deg)
 
 #todoInput
   border: none
@@ -76,7 +76,7 @@ ul
       margin-right: 5%
     small
       font-size: 1.2rem
-      color: #cccccc
+      color: #ddd
       padding: 5px
       pointer-events: none
     span  
@@ -112,23 +112,26 @@ ul li a
     text-decoration: none !important
 
 .todo-footer
-  background-color: $primary
+  background-color: adjust-hue(darken($primary, 15%) ,5deg)
+  border-top: 1px solid adjust-hue(darken($primary, 20%), 5deg)
+  border-bottom: 1px solid adjust-hue(darken($primary, 30%), 5deg)
   text-align: center
   display: flex
   font-size: 1.2rem
   font-weight: 900
   padding: 5%
-  color: adjust-hue(darken($primary, 30%), 10deg)
+  color: adjust-hue(darken($primary, 30%), 5deg)
   #view-toggles
     flex: 1
   button
     padding: 2.5px 5px
   a, p
-    text-shadow: 0 1px adjust-hue(lighten($primary, 10%), 10deg)
+    text-shadow: 0 1px adjust-hue(darken($primary, 5%), 10deg)
   
 .button-danger
   i  
     pointer-events: none
+    padding-left: 10px
 
 #author
   font-size: 1.2rem
