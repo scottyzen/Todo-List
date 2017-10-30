@@ -24,6 +24,7 @@ body
   text-align: center
   h2
     font-weight: 300
+    padding: 1vw 0
 
 input
   appearance: none
@@ -67,7 +68,7 @@ ul
     width: 100%
     display: block
     padding-bottom: 10px
-    padding: 3% 5%
+    padding: 4% 5%
     border-bottom: 1px solid #eee
     font-size: 1.8rem
     .fa-
@@ -112,28 +113,31 @@ ul
   small
     text-decoration: none !important
 
-.todo-footer
-  background-color: adjust-hue(darken($primary, 15%) ,5deg)
-  border-top: 1px solid adjust-hue(darken($primary, 20%), 5deg)
-  border-bottom: 1px solid adjust-hue(darken($primary, 30%), 5deg)
-  text-align: center
-  display: flex
-  font-size: 1.2rem
-  font-weight: 900
-  padding: 5%
-  color: adjust-hue(darken($primary, 30%), 5deg)
-  #items-left-wrap
-    text-align: left
-    width: 25%
-  #view-toggles
-    flex: 1
-  #clear-completed-wrap
-    text-align: right
-    width: 25%
-  button
-    padding: 2.5px 5px
-  a, p
-    text-shadow: 0 1px adjust-hue(darken($primary, 5%), 10deg)
+.body-footer-wrap
+  margin-bottom: 10%
+  .todo-footer
+    background-color: adjust-hue(darken($primary, 15%) ,5deg)
+    border-top: 1px solid adjust-hue(darken($primary, 20%), 5deg)
+    border-bottom: 1px solid adjust-hue(darken($primary, 30%), 5deg)
+    text-align: center
+    display: flex
+    font-size: 1.2rem
+    font-weight: 900
+    padding: 5%
+    color: adjust-hue(darken($primary, 30%), 5deg)
+    #items-left-wrap
+      text-align: left
+      width: 25%
+    #view-toggles
+      flex: 1
+    #clear-completed-wrap
+      text-align: right
+      width: 25%
+    button
+      padding: 2.5px 5px
+    a, p
+      text-shadow: 0 0.5px adjust-hue(darken($primary, 7.5%), 10deg)
+
   
 .button-danger
   i  
@@ -141,9 +145,13 @@ ul
     padding-left: 10px
 
 #author
-  font-size: 1.2rem
-  color: #666
-  a  
-   color: #555
-   font-weight: 600
-  
+  position: absolute
+  bottom: 30px
+  right: 20px
+  font-size: 1.6rem
+  a
+    padding: 5px 5px 20px 5px
+    margin: 12px 2px
+    color: #666
+    &:hover
+      color: darken($primary, 25%)
