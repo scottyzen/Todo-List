@@ -1,4 +1,4 @@
-var todoList = {
+let todoList = {
   todos: getLocalTodoList(),
   addTodos(todoText) {
     this.todos.push({
@@ -16,7 +16,7 @@ var todoList = {
     this.todos.splice(pos, 1);
   },
   toggleCompleted(pos) {
-    var todo = this.todos[pos];
+    let todo = this.todos[pos];
     todo.completed = !todo.completed;
   },
   clearCompleted() {
@@ -26,39 +26,40 @@ var todoList = {
     }
   },
   toggleAll() {
-    var totalTodos = this.todos.length;
+    let completedTodos = 0;
 
-    // If everything it true make everything false
+    //Get number of completed todos
     this.todos.forEach(function(todo) {
-      if (completedTodos === totalTodos) {
-        todo.completed = false;
-      } else {
-        // Otherwise make everything true
-        todo.completed = true;
-      }
+      if (todo.completed) completedTodos++;
+    });
+
+    this.todos.forEach(todo => {
+      completedTodos === this.todos.length
+        ? (todo.completed = false) // If everything it true make everything false
+        : (todo.completed = true); // Otherwise make everything true
     });
   },
   // Return the number of Active todo's
   getNumberOfActiveTodos() {
-    var todosLeft = 0;
+    let todosLeft = 0;
     this.todos.forEach(todo => {
       if (!todo.completed) todosLeft++;
     });
     return todosLeft;
   },
   getDateCreated() {
-    var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; // month 10
-    var day = dateObj.getUTCDate(); // day 28
-    var year = dateObj.getUTCFullYear(); // year 2017
+    let dateObj = new Date();
+    let month = dateObj.getUTCMonth() + 1; // month 10
+    let day = dateObj.getUTCDate(); // day 28
+    let year = dateObj.getUTCFullYear(); // year 2017
 
     return day + "/" + month + "/" + year;
   }
 };
 
-var handlers = {
+let handlers = {
   addNewTodo: () => {
-    var addTodoText = document.querySelector("#todoInput");
+    const addTodoText = document.querySelector("#todoInput");
     if (addTodoText.value !== "") {
       todoList.addTodos(addTodoText.value);
       // Clear input after adding new todo
@@ -103,22 +104,22 @@ document.querySelector("#todoInput").addEventListener("keypress", function(e) {
   if (e.keyCode == 13) handlers.addNewTodo();
 });
 
-var view = {
+let view = {
   displayTodos: function() {
     // Remove "List is empty" message
-    var emptyList = document.querySelector("#empty-list");
+    const emptyList = document.querySelector("#empty-list");
     if (emptyList) emptyList.remove();
 
-    var todoUl = document.querySelector("ul");
+    const todoUl = document.querySelector("ul");
     todoUl.innerHTML = "";
-    var completedTodoCounter = document.querySelector("#completed-todos");
+    const completedTodoCounter = document.querySelector("#completed-todos");
 
     completedTodoCounter.textContent =
       todoList.getNumberOfActiveTodos() + " Items left";
 
     todoList.todos.forEach((todo, possition) => {
-      var todoLi = document.createElement("li");
-      var icon = document.createElement("i");
+      let todoLi = document.createElement("li");
+      let icon = document.createElement("i");
       if (todo.completed) {
         todoLi.classList.add("completed");
         icon.classList.add("fa", "fa-check-square-o");
@@ -142,16 +143,16 @@ var view = {
   },
   createDeleteButton: function() {
     // Create DELETE Button
-    var button = document.createElement("a");
+    let button = document.createElement("a");
     button.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
     button.className = "button-danger";
     return button;
   },
   setUpEventListeners: function() {
-    var todoUl = document.querySelector("ul");
+    const todoUl = document.querySelector("ul");
     todoUl.addEventListener("click", function(event) {
       // Get the element that was clicked
-      var elClicked = event.target;
+      let elClicked = event.target;
 
       // Check if element clicked was the delete button
       if (elClicked.className === "button-danger") {
@@ -168,14 +169,16 @@ view.setUpEventListeners();
 
 function getLocalTodoList() {
   // get json data from localStorage
-  var jsonData = JSON.parse(localStorage.getItem("todos"));
-  var result = [];
+  let jsonData = JSON.parse(localStorage.getItem("todos"));
+  let result = [];
   // check if a list is already stored in localStorage
   if (jsonData === null) {
     return [];
   } else {
-    for (var i in jsonData) result.push(jsonData[i]);
+    for (let i in jsonData) result.push(jsonData[i]);
   }
   return result;
 }
+
+// Render View on load
 view.displayTodos();
