@@ -57,6 +57,8 @@ let todoList = {
   }
 };
 
+let viewToggles = document.querySelectorAll("#view-toggles button");
+
 let handlers = {
   addNewTodo: () => {
     const addTodoText = document.querySelector("#todoInput");
@@ -83,15 +85,29 @@ let handlers = {
     view.displayTodos();
   },
   showAll() {
-    document.querySelector("ul").classList.remove("active", "completed");
+    document.body.classList.remove("active", "completed");
+
+    viewToggles.forEach(function(element) {
+      element.classList.remove("active");
+    });
+
+    viewToggles[0].classList.add("active");
   },
   showActive() {
-    document.querySelector("ul").classList.remove("completed");
-    document.querySelector("ul").classList.add("active");
+    document.body.classList.remove("completed");
+    document.body.classList.add("active");
+    viewToggles.forEach(function(element) {
+      element.classList.remove("active");
+    });
+    viewToggles[1].classList.add("active");
   },
   showCompleted() {
-    document.querySelector("ul").classList.remove("active");
-    document.querySelector("ul").classList.add("completed");
+    document.body.classList.remove("active");
+    document.body.classList.add("completed");
+    viewToggles.forEach(function(element) {
+      element.classList.remove("active");
+    });
+    viewToggles[2].classList.add("active");
   },
   clearCompleted() {
     todoList.clearCompleted();

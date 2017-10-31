@@ -58,18 +58,6 @@ textarea, input, button
   &:-moz-placeholder
     color: #ccc
 
-
-.active 
-  .completed
-    display: none
-
-.completed
-  li
-    display: none
-  .completed
-    display: inline-block
-
-
 .todo-head
   display: flex
   padding: 0 5%
@@ -120,6 +108,37 @@ textarea, input, button
     padding: 2.5%
   small
     text-decoration: none !important
+
+// All
+#view-toggles
+  button
+    font-size: 1.2rem
+    background: none
+    border: none
+    color: adjust-hue(darken($primary, 50%), -5deg)
+    text-shadow: 0 0.5px adjust-hue(darken($primary, 7.5%), 10deg)
+  .active
+    background: lighten($primary, 5%)
+    border-top: 1px solid lighten($primary, 15%)
+    border-right: 1px solid darken($primary, 20%)
+    border-bottom: 1px solid darken($primary, 40%)
+    border-left: 1px solid darken($primary, 20%)
+    border-radius: 3px
+    color: darken($primary, 30%)
+    text-shadow: none
+    box-shadow: 0 1px 0.5px darken($primary, 25%)
+
+// Active
+.active 
+  .completed
+    display: none
+
+// Completed
+.completed
+  li
+    display: none
+  .completed
+    display: inline-block
   
 
 .body-footer-wrap
@@ -134,17 +153,19 @@ textarea, input, button
     font-size: 1.2rem
     font-weight: 900
     padding: 5%
-    color: adjust-hue(darken($primary, 30%), 5deg)
+    color: adjust-hue(darken($primary, 50%), -5deg)
+    line-height: 2.4rem
     #items-left-wrap
       text-align: left
       width: 25%
     #view-toggles
       flex: 1
+      button
+        font-weight: 600
+        padding: 2px 6px 3px
     #clear-completed-wrap
       text-align: right
       width: 25%
-    button
-      padding: 2.5px 5px
     a, p
       text-shadow: 0 0.5px adjust-hue(darken($primary, 7.5%), 10deg)
 
