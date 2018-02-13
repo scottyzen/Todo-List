@@ -157,7 +157,9 @@ let view = {
         icon.classList.add("fa", "fa-square-o");
       }
       todoLi.id = possition;
-      todoLi.innerHTML = `<span>${todo.todoText}</span> <small>${todo.date}</small>`;
+      todoLi.innerHTML = `<span>${todo.todoText}</span> <small>${
+        todo.date
+      }</small>`;
       todoLi.prepend(icon);
 
       // Create buttons to updated and distroy todos

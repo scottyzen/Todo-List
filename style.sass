@@ -109,24 +109,6 @@ textarea, input, button
   small
     text-decoration: none !important
 
-// All
-#view-toggles
-  button
-    font-size: 1.2rem
-    background: none
-    border: none
-    color: adjust-hue(darken($primary, 50%), -5deg)
-    text-shadow: 0 0.5px adjust-hue(darken($primary, 7.5%), 10deg)
-  .active
-    background: lighten($primary, 5%)
-    border-top: 1px solid lighten($primary, 15%)
-    border-right: 1px solid darken($primary, 20%)
-    border-bottom: 1px solid darken($primary, 40%)
-    border-left: 1px solid darken($primary, 20%)
-    border-radius: 3px
-    color: darken($primary, 30%)
-    text-shadow: none
-    box-shadow: 0 1px 0.5px darken($primary, 25%)
 
 // Active
 .active 
@@ -151,29 +133,49 @@ textarea, input, button
     text-align: center
     display: flex
     font-size: 1.2rem
-    font-weight: 900
     padding: 5%
-    color: adjust-hue(darken($primary, 50%), -5deg)
     line-height: 2.4rem
-    #items-left-wrap
-      text-align: left
-      width: 25%
+    a, p, button
+      text-shadow: 0 0.5px adjust-hue(darken($primary, 7.5%), 10deg)
+      color: adjust-hue(darken($primary, 50%), -5deg)
+      font-weight: 600
+      font-size: 1em
     #view-toggles
       flex: 1
       button
-        font-weight: 600
         padding: 2px 6px 3px
+        background: none
+        border: none
+      .active
+        background: lighten($primary, 5%)
+        border-top: 1px solid lighten($primary, 15%)
+        border-right: 1px solid darken($primary, 20%)
+        border-bottom: 1px solid darken($primary, 40%)
+        border-left: 1px solid darken($primary, 20%)
+        border-radius: 3px
+        color: darken($primary, 30%)
+        text-shadow: none
+        box-shadow: 0 1px 0.5px darken($primary, 25%)
+    #items-left-wrap
+      text-align: left
+      width: 25%
     #clear-completed-wrap
       text-align: right
       width: 25%
-    a, p
-      text-shadow: 0 0.5px adjust-hue(darken($primary, 7.5%), 10deg)
+    @media only screen and (max-width: 480px)
+      font-size: 1rem
 
   
 .button-danger
   i  
     pointer-events: none
     padding-left: 10px
+    display: none
+    
+li:hover
+  .button-danger
+    i
+      display: inline-block
 
 #author
   position: absolute
@@ -186,6 +188,15 @@ textarea, input, button
     color: #666
     &:hover
       color: darken($primary, 25%)
+  
 
 .fa-square-o, .fa-check-square-o
   width: 10px
+
+@media only screen and (max-width: 480px)
+  html 
+    font-size: 9px
+    body
+      padding: 2%
+    #author 
+      display: none
